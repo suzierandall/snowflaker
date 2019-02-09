@@ -39,4 +39,12 @@ class Snowflake {
 	public function get_default_grid_size(): int {
 		return 9;
 	}
+
+	/**
+	 * Get the maximum permitted grid size
+	 * @return int - the maximum size
+	 */
+	public function get_grid_size_max(): int {
+		return 30;
+	}
 }
