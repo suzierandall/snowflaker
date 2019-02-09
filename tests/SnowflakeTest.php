@@ -26,4 +26,8 @@ class SnowflakeTest extends TestCase {
 		$snowflake = new Snowflake(12);
 		$this->assertSame(12, $snowflake->get_grid_size());
 	}
+
+	function testHasGridSizeMax() {
+		$this->assertIsInt((new Snowflake)->get_grid_size_max());
+	}
 }
