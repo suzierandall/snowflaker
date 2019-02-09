@@ -84,6 +84,6 @@ class Snowflake {
 		elseif ($size > $this->get_grid_size_max()) {
 			$size = $this->get_grid_size_max();
 		}
-		return $ize;
+		return $size;
 	}
 }
