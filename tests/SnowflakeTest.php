@@ -38,4 +38,8 @@ class SnowflakeTest extends TestCase {
 	function testCannotSetGridSizeSmallerThanMin() {
 		$this->assertFalse((new Snowflake)->set_grid_size(1));
 	}
+
+	function testCannotSetGridSizeBiggerThanMax() {
+		$this->assertFalse((new Snowflake)->set_grid_size(50));
+	}
 }
