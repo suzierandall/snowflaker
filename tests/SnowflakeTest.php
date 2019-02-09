@@ -15,4 +15,10 @@ class SnowflakeTest extends TestCase {
 	function testHasDefaultGridSize() {
 		$this->assertSame(9, (new Snowflake)->get_default_grid_size());
 	}
+
+	function testCanSetGridSize() {
+		$snowflake = new Snowflake;
+		$this->assertTrue($snowflake->set_grid_size(12));
+		$this->assertSame(12, $snowflake->get_grid_size());
+	}
 }
