@@ -57,4 +57,19 @@ class SnowflakeTest extends TestCase {
 		$this->assertFalse($snowflake->set_grid_size(54));
 		$this->assertFalse($snowflake->set_grid_size(102));
 	}
+
+	function testIsSizeWithinRange() {
+		$snowflake = new Snowflake;
+		$this->assertFalse($snowflake->is_size_within_range(-20));
+		$this->assertFalse($snowflake->is_size_within_range(0));
+		$this->assertFalse($snowflake->is_size_within_range(1));
+		$this->assertFalse($snowflake->is_size_within_range(2));
+		$this->assertTrue($snowflake->is_size_within_range(3));
+		$this->assertTrue($snowflake->is_size_within_range(12));
+		$this->assertTrue($snowflake->is_size_within_range(23));
+		$this->assertTrue($snowflake->is_size_within_range(30));
+		$this->assertFalse($snowflake->is_size_within_range(31));
+		$this->assertFalse($snowflake->is_size_within_range(54));
+		$this->assertFalse($snowflake->is_size_within_range(102));
+	}
 }
