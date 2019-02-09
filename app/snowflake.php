@@ -19,8 +19,7 @@ class Snowflake {
 	 * @return bool - true if within permitted range, false otherwise
 	 */
 	public function set_grid_size(int $size): bool {
-		if ($size < $this->get_grid_size_min() ||
-			$size > $this->get_grid_size_max()) {
+		if (!$this->is_size_within_range($size)) {
 			return false;
 		}
 		$this->m_grid_size = $size;
