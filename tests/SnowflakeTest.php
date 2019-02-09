@@ -21,4 +21,9 @@ class SnowflakeTest extends TestCase {
 		$this->assertTrue($snowflake->set_grid_size(12));
 		$this->assertSame(12, $snowflake->get_grid_size());
 	}
+
+	function testCanSetGridSizeOnConstruction() {
+		$snowflake = new Snowflake(12);
+		$this->assertSame(12, $snowflake->get_grid_size());
+	}
 }
