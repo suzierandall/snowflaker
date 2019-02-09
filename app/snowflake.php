@@ -71,4 +71,19 @@ class Snowflake {
 		}
 		return true;
 	}
+
+	/**
+	 * Cap out-of-range sizes
+	 * @param int size - the current size
+	 * @return int - min if below min, max if above max, else original size
+	 */
+	public function cap_size_within_range(int $size): int {
+		if ($size < $this->get_grid_size_min()) {
+			$size = $this->get_grid_size_min();
+		}
+		elseif ($size > $this->get_grid_size_max()) {
+			$size = $this->get_grid_size_max();
+		}
+		return $ize;
+	}
 }
