@@ -59,6 +59,11 @@ class Snowflake {
 		return 3;
 	}
 
+	/**
+	 * Check if the given size is within the permitted range
+	 * @param int size - the size
+	 * @return bool - true if within permitted range, false otherwise
+	 */
 	public function is_size_within_range(int $size): bool {
 		if ($size < $this->get_grid_size_min() ||
 			$size > $this->get_grid_size_max()) {
