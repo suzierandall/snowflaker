@@ -1,10 +1,10 @@
 <?php
 require_once(__DIR__ . '/../app/snowflake.php');
 
-use PHPUnit\Framework\Testcase;
+use PHPUnit\Framework\TestCase;
 
 class SnowflakeTest extends TestCase {
 	function testCanCreateSnowflake() {
-		$snowflake = new Snowflake;
+		$this->assertIsObject(new Snowflake);
 	}
 }
