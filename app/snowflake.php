@@ -16,9 +16,12 @@ class Snowflake {
 	/**
 	 * Set a custom grid size
 	 * @param int size - the custom grid size
-	 * @return bool - true
+	 * @return bool - true if above min threshold, false otherwise
 	 */
 	public function set_grid_size(int $size): bool {
+		if ($size < $this->get_grid_size_min()) {
+			return false;
+		}
 		$this->m_grid_size = $size;
 		return true;
 	}
