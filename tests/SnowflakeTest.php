@@ -42,4 +42,19 @@ class SnowflakeTest extends TestCase {
 	function testCannotSetGridSizeBiggerThanMax() {
 		$this->assertFalse((new Snowflake)->set_grid_size(50));
 	}
+
+	function testCannotSetGridSizeOutsidePermittedRange() {
+		$snowflake = new Snowflake;
+		$this->assertFalse($snowflake->set_grid_size(-20));
+		$this->assertFalse($snowflake->set_grid_size(0));
+		$this->assertFalse($snowflake->set_grid_size(1));
+		$this->assertFalse($snowflake->set_grid_size(2));
+		$this->assertTrue($snowflake->set_grid_size(3));
+		$this->assertTrue($snowflake->set_grid_size(12));
+		$this->assertTrue($snowflake->set_grid_size(23));
+		$this->assertTrue($snowflake->set_grid_size(30));
+		$this->assertFalse($snowflake->set_grid_size(31));
+		$this->assertFalse($snowflake->set_grid_size(54));
+		$this->assertFalse($snowflake->set_grid_size(102));
+	}
 }
