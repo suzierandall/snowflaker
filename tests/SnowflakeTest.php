@@ -72,4 +72,19 @@ class SnowflakeTest extends TestCase {
 		$this->assertFalse($snowflake->is_size_within_range(54));
 		$this->assertFalse($snowflake->is_size_within_range(102));
 	}
+
+	function testDoesCapGridSizeOutOfRange() {
+		$snowflake = new Snowflake;
+		$this->assertSame(3, $snowflake->cap_size_within_range(-20));
+		$this->assertSame(3, $snowflake->cap_size_within_range(0));
+		$this->assertSame(3, $snowflake->cap_size_within_range(1));
+		$this->assertSame(3, $snowflake->cap_size_within_range(2));
+		$this->assertSame(3, $snowflake->cap_size_within_range(3));
+		$this->assertSame(12, $snowflake->cap_size_within_range(12));
+		$this->assertSame(23, $snowflake->cap_size_within_range(23));
+		$this->assertSame(30, $snowflake->cap_size_within_range(30));
+		$this->assertSame(30, $snowflake->cap_size_within_range(31));
+		$this->assertSame(30, $snowflake->cap_size_within_range(54));
+		$this->assertSame(30, $snowflake->cap_size_within_range(102));
+	}
 }
