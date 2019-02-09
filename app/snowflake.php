@@ -59,4 +59,12 @@ class Snowflake {
 	public function get_grid_size_min(): int {
 		return 3;
 	}
+
+	public function is_size_within_range(int $size): bool {
+		if ($size < $this->get_grid_size_min() ||
+			$size > $this->get_grid_size_max()) {
+			return false;
+		}
+		return true;
+	}
 }
