@@ -30,4 +30,8 @@ class SnowflakeTest extends TestCase {
 	function testHasGridSizeMax() {
 		$this->assertIsInt((new Snowflake)->get_grid_size_max());
 	}
+
+	function testHasGridSizeMin() {
+		$this->assertIsInt((new Snowflake)->get_grid_size_min());
+	}
 }
