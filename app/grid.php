@@ -4,6 +4,9 @@ class Grid {
 	private $m_size;
 	private $m_min;
 	private $m_max;
+	private const DEFAULT_SIZE = 9;
+	private const DEFAULT_MIN = 3;
+	private const DEFAULT_MAX = 30;
 
 	/**
 	 * Initialise the instance
@@ -37,7 +40,7 @@ class Grid {
 	 * @return int - the default size
 	 */
 	public function get_default_size(): int {
-		return 9;
+		return self::DEFAULT_SIZE;
 	}
 
 	/**
@@ -61,7 +64,7 @@ class Grid {
 	 * @return int - the maximum size
 	 */
 	public function get_size_max(): int {
-		return $this->m_max ?: 30;
+		return $this->m_max ?: self::DEFAULT_MAX;
 	}
 
 	/**
@@ -69,7 +72,7 @@ class Grid {
 	 * @return int - the minimum size
 	 */
 	public function get_size_min(): int {
-		return $this->m_min ?: 3;
+		return $this->m_min ?: self::DEFAULT_MIN;
 	}
 
 	/**
