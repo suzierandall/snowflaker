@@ -9,53 +9,53 @@ class GridTest extends TestCase {
 	}
 
 	function testHasGridSize() {
-		$this->assertNotEmpty((new Grid)->get_grid_size());
+		$this->assertNotEmpty((new Grid)->get_size());
 	}
 
 	function testHasDefaultGridSize() {
-		$this->assertSame(9, (new Grid)->get_default_grid_size());
+		$this->assertSame(9, (new Grid)->get_default_size());
 	}
 
 	function testCanSetGridSize() {
 		$grid = new Grid;
-		$this->assertTrue($grid->set_grid_size(12));
-		$this->assertSame(12, $grid->get_grid_size());
+		$this->assertTrue($grid->set_size(12));
+		$this->assertSame(12, $grid->get_size());
 	}
 
 	function testCanSetGridSizeOnConstruction() {
 		$grid = new Grid(12);
-		$this->assertSame(12, $grid->get_grid_size());
+		$this->assertSame(12, $grid->get_size());
 	}
 
 	function testHasGridSizeMax() {
-		$this->assertIsInt((new Grid)->get_grid_size_max());
+		$this->assertIsInt((new Grid)->get_size_max());
 	}
 
 	function testHasGridSizeMin() {
-		$this->assertIsInt((new Grid)->get_grid_size_min());
+		$this->assertIsInt((new Grid)->get_size_min());
 	}
 
 	function testCannotSetGridSizeSmallerThanMin() {
-		$this->assertFalse((new Grid)->set_grid_size(1));
+		$this->assertFalse((new Grid)->set_size(1));
 	}
 
 	function testCannotSetGridSizeBiggerThanMax() {
-		$this->assertFalse((new Grid)->set_grid_size(50));
+		$this->assertFalse((new Grid)->set_size(50));
 	}
 
 	function testCannotSetGridSizeOutsidePermittedRange() {
 		$grid = new Grid;
-		$this->assertFalse($grid->set_grid_size(-20));
-		$this->assertFalse($grid->set_grid_size(0));
-		$this->assertFalse($grid->set_grid_size(1));
-		$this->assertFalse($grid->set_grid_size(2));
-		$this->assertTrue($grid->set_grid_size(3));
-		$this->assertTrue($grid->set_grid_size(12));
-		$this->assertTrue($grid->set_grid_size(23));
-		$this->assertTrue($grid->set_grid_size(30));
-		$this->assertFalse($grid->set_grid_size(31));
-		$this->assertFalse($grid->set_grid_size(54));
-		$this->assertFalse($grid->set_grid_size(102));
+		$this->assertFalse($grid->set_size(-20));
+		$this->assertFalse($grid->set_size(0));
+		$this->assertFalse($grid->set_size(1));
+		$this->assertFalse($grid->set_size(2));
+		$this->assertTrue($grid->set_size(3));
+		$this->assertTrue($grid->set_size(12));
+		$this->assertTrue($grid->set_size(23));
+		$this->assertTrue($grid->set_size(30));
+		$this->assertFalse($grid->set_size(31));
+		$this->assertFalse($grid->set_size(54));
+		$this->assertFalse($grid->set_size(102));
 	}
 
 	function testIsSizeWithinRange() {
