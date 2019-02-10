@@ -31,7 +31,6 @@ class GridTest extends TestCase {
 		$this->assertIsInt((new Grid)->get_size_min());
 	}
 
-
 	/**
 	 * @dataProvider defaultCappedSizeProvider
 	 */
@@ -72,19 +71,11 @@ class GridTest extends TestCase {
 		$this->assertFalse($grid->is_size_within_range(102));
 	}
 
-	function testDoesCapSizeOutsideRange() {
-		$grid = new Grid;
-		$this->assertSame(3, $grid->cap_size_within_range(-20));
-		$this->assertSame(3, $grid->cap_size_within_range(0));
-		$this->assertSame(3, $grid->cap_size_within_range(1));
-		$this->assertSame(3, $grid->cap_size_within_range(2));
-		$this->assertSame(3, $grid->cap_size_within_range(3));
-		$this->assertSame(12, $grid->cap_size_within_range(12));
-		$this->assertSame(23, $grid->cap_size_within_range(23));
-		$this->assertSame(30, $grid->cap_size_within_range(30));
-		$this->assertSame(30, $grid->cap_size_within_range(31));
-		$this->assertSame(30, $grid->cap_size_within_range(54));
-		$this->assertSame(30, $grid->cap_size_within_range(102));
+	/**
+	 * @dataProvider defaultCappedSizeProvider
+	 */
+	function testDoesCapSizeOutsideRange($out, $in) {
+		$this->assertSame($out, (new Grid)->cap_size_within_range($in));
 	}
 
 	function testCanSetSizeMin() {
