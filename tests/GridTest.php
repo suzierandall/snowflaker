@@ -12,10 +12,6 @@ class GridTest extends TestCase {
 		$this->assertNotEmpty((new Grid)->get_size());
 	}
 
-	function testHasDefaultSize() {
-		$this->assertSame(9, (new Grid)->get_default_size());
-	}
-
 	function testCanSetSize() {
 		$grid = new Grid;
 		$grid->set_size(12);

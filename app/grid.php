@@ -31,16 +31,7 @@ class Grid {
 	 * @return int - custom or default size
 	 */
 	public function get_size(): int {
-		return $this->m_size
-			?: $this->get_default_size();
-	}
-
-	/**
-	 * Get the default size
-	 * @return int - the default size
-	 */
-	public function get_default_size(): int {
-		return self::DEFAULT_SIZE;
+		return $this->m_size ?: self::DEFAULT_SIZE;
 	}
 
 	/**
