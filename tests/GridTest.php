@@ -102,11 +102,21 @@ class GridTest extends TestCase {
 		$grid = new Grid;
 		$grid->set_size_min(1);
 		$this->assertSame(1, $grid->get_size_min(1));
+		$this->assertSame(1, $grid->cap_size_within_range(-20));
+		$this->assertSame(1, $grid->cap_size_within_range(-1));
+		$this->assertSame(1, $grid->cap_size_within_range(0));
+		$this->assertSame(1, $grid->cap_size_within_range(1));
 	}
 
 	function testCanSetSizeMax() {
 		$grid = new Grid;
-		$grid->set_size_min(100);
-		$this->assertSame(100, $grid->get_size_min(100));
+		$grid->set_size_max(100);
+		$this->assertSame(100, $grid->get_size_max(100));
+		$this->assertSame(30, $grid->cap_size_within_range(30));
+		$this->assertSame(52, $grid->cap_size_within_range(52));
+		$this->assertSame(100, $grid->cap_size_within_range(100));
+		$this->assertSame(100, $grid->cap_size_within_range(101));
+		$this->assertSame(100, $grid->cap_size_within_range(105));
+		$this->assertSame(100, $grid->cap_size_within_range(200));
 	}
 }
