@@ -39,6 +39,22 @@ class Grid {
 	}
 
 	/**
+	 * Set a custom min permitted size
+	 * @param int size - the min size
+	 */
+	public function set_size_min(int $size) {
+		return true;
+	}
+
+	/**
+	 * Set a custom max permitted size
+	 * @param int size - the max size
+	 */
+	public function set_size_max(int $size) {
+		return true;
+	}
+
+	/**
 	 * Get the maximum permitted size
 	 * @return int - the maximum size
 	 */
