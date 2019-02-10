@@ -67,19 +67,6 @@ class Grid {
 	}
 
 	/**
-	 * Check if the given size is within the permitted range
-	 * @param int size - the size
-	 * @return bool - true if within permitted range, false otherwise
-	 */
-	public function is_size_within_range(int $size): bool {
-		if ($size >= $this->get_size_min() &&
-			$size <= $this->get_size_max()) {
-			return true;
-		}
-		return false;
-	}
-
-	/**
 	 * Cap out-of-range sizes
 	 * @param int size - the current size
 	 * @return int - min if below min, max if above max, else original size
