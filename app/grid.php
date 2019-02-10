@@ -18,10 +18,7 @@ class Grid {
 	 * @param int size - the custom size
 	 */
 	public function set_size(int $size) {
-		if (!$this->is_size_within_range($size)) {
-			$size = $this->cap_size_within_range($size);
-		}
-		$this->m_size = $size;
+		$this->m_size = $this->cap_size_within_range($size);
 	}
 
 	/**
