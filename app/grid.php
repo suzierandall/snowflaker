@@ -65,11 +65,11 @@ class Grid {
 	 * @return bool - true if within permitted range, false otherwise
 	 */
 	public function is_size_within_range(int $size): bool {
-		if ($size < $this->get_size_min() ||
-			$size > $this->get_size_max()) {
-			return false;
+		if ($size >= $this->get_size_min() &&
+			$size <= $this->get_size_max()) {
+			return true;
 		}
-		return true;
+		return false;
 	}
 
 	/**
