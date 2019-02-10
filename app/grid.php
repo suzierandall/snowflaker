@@ -78,12 +78,10 @@ class Grid {
 	 * @return int - min if below min, max if above max, else original size
 	 */
 	public function cap_size_within_range(int $size): int {
-		if ($size < $this->get_size_min()) {
-			$size = $this->get_size_min();
-		}
-		elseif ($size > $this->get_size_max()) {
-			$size = $this->get_size_max();
-		}
+		$min = $this->get_size_min();
+		$max = $this->get_size_max();
+		$size = max([$min, $size]);
+		$size = min([$max, $size]);
 		return $size;
 	}
 }
