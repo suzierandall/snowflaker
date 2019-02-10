@@ -14,16 +14,14 @@ class Grid {
 	}
 
 	/**
-	 * Set a custom size
+	 * Set a custom size, size capped if outside range
 	 * @param int size - the custom size
-	 * @return bool - true if within permitted range, false otherwise
 	 */
-	public function set_size(int $size): bool {
+	public function set_size(int $size) {
 		if (!$this->is_size_within_range($size)) {
-			return false;
+			$size = $this->cap_size_within_range($size);
 		}
 		$this->m_size = $size;
-		return true;
 	}
 
 	/**
