@@ -14,7 +14,7 @@ class Size {
 	 */
 	public function __construct(int $size = null) {
 		if (is_int($size)) {
-			$this->set_size($size);
+			$this->set($size);
 		}
 	}
 
@@ -22,15 +22,15 @@ class Size {
 	 * Set a custom size, size capped if outside range
 	 * @param int size - the custom size
 	 */
-	public function set_size(int $size) {
-		$this->m_size = $this->cap_size_within_range($size);
+	public function set(int $size) {
+		$this->m_size = $this->cap_within_range($size);
 	}
 
 	/**
 	 * Get the size
 	 * @return int - custom or default size
 	 */
-	public function get_size(): int {
+	public function get(): int {
 		return $this->m_size ?: self::DEFAULT_SIZE;
 	}
 
@@ -38,7 +38,7 @@ class Size {
 	 * Set a custom min permitted size
 	 * @param int size - the min size
 	 */
-	public function set_size_min(int $size) {
+	public function set_min(int $size) {
 		$this->m_min = $size;
 	}
 
@@ -46,7 +46,7 @@ class Size {
 	 * Set a custom max permitted size
 	 * @param int size - the max size
 	 */
-	public function set_size_max(int $size) {
+	public function set_max(int $size) {
 		$this->m_max = $size;
 	}
 
@@ -54,7 +54,7 @@ class Size {
 	 * Get the maximum permitted size
 	 * @return int - the maximum size
 	 */
-	public function get_size_max(): int {
+	public function get_max(): int {
 		return $this->m_max ?: self::DEFAULT_MAX;
 	}
 
@@ -62,7 +62,7 @@ class Size {
 	 * Get the minimum permitted size
 	 * @return int - the minimum size
 	 */
-	public function get_size_min(): int {
+	public function get_min(): int {
 		return $this->m_min ?: self::DEFAULT_MIN;
 	}
 
@@ -71,9 +71,9 @@ class Size {
 	 * @param int size - the current size
 	 * @return int - min if below min, max if above max, else original size
 	 */
-	public function cap_size_within_range(int $size): int {
-		$min = $this->get_size_min();
-		$max = $this->get_size_max();
+	public function cap_within_range(int $size): int {
+		$min = $this->get_min();
+		$max = $this->get_max();
 		$size = max([$min, $size]);
 		$size = min([$max, $size]);
 		return $size;
