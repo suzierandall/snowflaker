@@ -2,6 +2,8 @@
 
 class Grid {
 	private $m_size;
+	private $m_min;
+	private $m_max;
 
 	/**
 	 * Initialise the instance
@@ -43,7 +45,7 @@ class Grid {
 	 * @param int size - the min size
 	 */
 	public function set_size_min(int $size) {
-		return true;
+		$this->m_min = $size;
 	}
 
 	/**
@@ -51,7 +53,7 @@ class Grid {
 	 * @param int size - the max size
 	 */
 	public function set_size_max(int $size) {
-		return true;
+		$this->m_max = $size;
 	}
 
 	/**
@@ -59,7 +61,7 @@ class Grid {
 	 * @return int - the maximum size
 	 */
 	public function get_size_max(): int {
-		return 30;
+		return $this->m_max ?: 30;
 	}
 
 	/**
@@ -67,7 +69,7 @@ class Grid {
 	 * @return int - the minimum size
 	 */
 	public function get_size_min(): int {
-		return 3;
+		return $this->m_min ?: 3;
 	}
 
 	/**
