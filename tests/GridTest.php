@@ -18,7 +18,7 @@ class GridTest extends TestCase {
 
 	function testCanSetSize() {
 		$grid = new Grid;
-		$this->assertTrue($grid->set_size(12));
+		$grid->set_size(12);
 		$this->assertSame(12, $grid->get_size());
 	}
 
@@ -37,17 +37,39 @@ class GridTest extends TestCase {
 
 	function testDoesCapSetSizeOutsideRange() {
 		$grid = new Grid;
-		$this->assertSame(3, $grid->set_size(-20));
-		$this->assertSame(3, $grid->set_size(0));
-		$this->assertSame(3, $grid->set_size(1));
-		$this->assertSame(3, $grid->set_size(2));
-		$this->assertSame(3, $grid->set_size(3));
-		$this->assertSame(12, $grid->set_size(12));
-		$this->assertSame(23, $grid->set_size(23));
-		$this->assertSame(30, $grid->set_size(30));
-		$this->assertSame(30, $grid->set_size(31));
-		$this->assertSame(30, $grid->set_size(54));
-		$this->assertSame(30, $grid->set_size(102));
+
+		$grid->set_size(-20);
+		$this->assertSame(3, $grid->get_size(-20));
+
+		$grid->set_size(0);
+		$this->assertSame(3, $grid->get_size(0));
+
+		$grid->set_size(1);
+		$this->assertSame(3, $grid->get_size(1));
+
+		$grid->set_size(2);
+		$this->assertSame(3, $grid->get_size(2));
+
+		$grid->set_size(3);
+		$this->assertSame(3, $grid->get_size(3));
+
+		$grid->set_size(12);
+		$this->assertSame(12, $grid->get_size(12));
+
+		$grid->set_size(23);
+		$this->assertSame(23, $grid->get_size(23));
+
+		$grid->set_size(30);
+		$this->assertSame(30, $grid->get_size(30));
+
+		$grid->set_size(31);
+		$this->assertSame(30, $grid->get_size(31));
+
+		$grid->set_size(54);
+		$this->assertSame(30, $grid->get_size(54));
+
+		$grid->set_size(102);
+		$this->assertSame(30, $grid->get_size(102));
 	}
 
 	function testIsSizeWithinRange() {
