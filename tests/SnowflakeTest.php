@@ -8,7 +8,12 @@ class SnowflakeTest extends TestCase {
 		$this->assertIsObject(new Snowflake);
 	}
 
-	function testCanGetSnowflake() {
-		$this->assertNotEmpty((new Snowflake)->get());
+	function testCanGetSnowflakeJSON() {
+		$this->assertThat(
+			(new Snowflake)->get(),
+			$this->matchesRegularExpression(
+				'/{\n?(\s*("[\w\s-]+")\s*:\s*("?[\w\s-]+"?),\n?)+}/'
+			)
+		);
 	}
 }
