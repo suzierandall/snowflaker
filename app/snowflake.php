@@ -9,7 +9,7 @@ class Snowflake {
 	 * @param int size - option custom grid size
 	 */
 	public function __construct(int $size = null) {
-		$this->m_size = new Size($size);
+		$this->m_size = (new Size($size))->get();
 	}
 
 	/**
@@ -17,16 +17,26 @@ class Snowflake {
 	 * @return JSON - the character map
 	 */
 	public function get() {
-		return <<< JSON
-{
-	"thing" : "another thing",
-	"thing":1,
-	"thingy thing": [1,2,3,4,5],
-	"t" :"thing",
-	[1,2,3,4,5],
-	["thing", "thing", "thing"],
-}
-JSON;
+		$map = $this->build();
+		$json_map = json_encode($map);
+		return $json_map;
+	}
+
+	/**
+	  * Build the character map
+	  * @return array - the character map
+	  */
+	private function build() {
+		$size = $this->m_size;
+		$rows = [];
+		for($i = 0; $i < $size; ++$i) {
+			$cols = [];
+			for($i = 0; $i < $size; ++$i) {
+				$cols[] = '*';
+			}
+			$rows[] = $cols;
+		}
+		return $rows;
 	}
 
 	/**
