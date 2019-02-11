@@ -5,7 +5,7 @@ use PHPUnit\Framework\TestCase;
 
 class SnowflakeTest extends TestCase {
 	function testCanCreateSnowflake() {
-		$this->assertIsObject(new Snowflake);
+		$this->assertIsObject(new Snowflake());
 	}
 
 	function testCanGetSnowflakeJSON() {
@@ -15,5 +15,9 @@ class SnowflakeTest extends TestCase {
 				'/{\n?(\s*(("[\w\s-]+")\s*:)?\s*([\["]?["\w\s,-]+[\]"]?),\n?)+}/'
 			)
 		);
+	}
+
+	function testSnowflakeIsReady() {
+		$this->assertTrue((new Snowflake)->is_ready());
 	}
 }
