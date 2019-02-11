@@ -7,8 +7,10 @@ class Snowflake {
 {
 	"thing" : "another thing",
 	"thing":1,
-	"thingy thing": "something",
+	"thingy thing": [1,2,3,4,5],
 	"t" :"thing",
+	[1,2,3,4,5],
+	["thing", "thing", "thing"],
 }
 JSON;
 	}
