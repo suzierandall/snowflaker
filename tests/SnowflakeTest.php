@@ -12,7 +12,7 @@ class SnowflakeTest extends TestCase {
 		$this->assertThat(
 			(new Snowflake)->get(),
 			$this->matchesRegularExpression(
-				'/{\n?(\s*("[\w\s-]+")\s*:\s*("?[\w\s-]+"?),\n?)+}/'
+				'/{\n?(\s*(("[\w\s-]+")\s*:)?\s*([\["]?["\w\s,-]+[\]"]?),\n?)+}/'
 			)
 		);
 	}
