@@ -2,6 +2,10 @@
 
 class Snowflake {
 
+	/**
+	 * Get the JSON character map to build the snowflake
+	 * @return JSON - the character map
+	 */
 	public function get() {
 		return <<< JSON
 {
@@ -13,6 +17,14 @@ class Snowflake {
 	["thing", "thing", "thing"],
 }
 JSON;
+	}
+
+	/**
+	 * Check if Snowflake is ready to cystalise
+	 * @return bool - true if ready, false otherwise
+	 */
+	public function is_ready() {
+		return true;
 	}
 
 }
