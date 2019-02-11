@@ -1,6 +1,16 @@
 <?php
+require_once(__DIR__ . '/size.php');
 
 class Snowflake {
+	private $m_size;
+
+	/**
+	 * Ininitialise Snowflake; set the required size
+	 * @param int size - option custom grid size
+	 */
+	public function __construct(int $size = null) {
+		$this->m_size = new Size($size);
+	}
 
 	/**
 	 * Get the JSON character map to build the snowflake
