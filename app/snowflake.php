@@ -5,7 +5,7 @@ class Snowflake {
 	private $m_size;
 
 	/**
-	 * Ininitialise Snowflake; set the required size
+	 * Iniitialise Snowflake; set the required size
 	 * @param int size - option custom grid size
 	 */
 	public function __construct(int $size = null) {
