@@ -28,15 +28,15 @@ class Snowflake {
 	  */
 	private function build() {
 		$size = $this->m_size;
-		$rows = [];
+		$grid = [];
 		for($i = 0; $i < $size; ++$i) {
-			$cols = [];
-			for($i = 0; $i < $size; ++$i) {
-				$cols[] = '*';
+			$rows = [];
+			for($ii = 0; $ii < $size; ++$ii) {
+				$rows[] = '*';
 			}
-			$rows[] = $cols;
+			$grid[] = $rows;
 		}
-		return $rows;
+		return $grid;
 	}
 
 	/**
