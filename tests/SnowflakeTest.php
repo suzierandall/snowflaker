@@ -4,13 +4,19 @@ require_once(__DIR__ . '/../app/snowflake.php');
 use PHPUnit\Framework\TestCase;
 
 class SnowflakeTest extends TestCase {
+	protected $snowflake;
+
+	function setUp(): void {
+		$this->snowflake = new Snowflake;
+	}
+
 	function testCanCreateSnowflake() {
-		$this->assertIsObject(new Snowflake());
+		$this->assertIsObject($this->snowflake);
 	}
 
 	function testCanGetSnowflakeJSON() {
 		$this->assertThat(
-			(new Snowflake)->get(),
+			$this->snowflake->get(),
 			$this->matchesRegularExpression(
 				'/{?\n?(\s*(("[\w\s-]+")\s*:)?\s*([\["]?["\w\s,-]+[\]"]?),\n?)+}?/'
 			)
@@ -18,6 +24,6 @@ class SnowflakeTest extends TestCase {
 	}
 
 	function testSnowflakeIsReady() {
-		$this->assertTrue((new Snowflake)->is_ready());
+		$this->assertTrue($this->snowflake->is_ready());
 	}
 }
