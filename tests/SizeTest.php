@@ -4,47 +4,54 @@ require_once(__DIR__ . '/../app/size.php');
 use PHPUnit\Framework\TestCase;
 
 class SizeClassTest extends TestCase {
+	protected $size;
+
+	function setUp(): void {
+		$this->size = new Size;
+	}
+
 	function testCanCreateSize() {
-		$this->assertIsObject(new Size);
+		$this->assertIsObject($this->size);
 	}
 
 	function testHasSize() {
-		$this->assertNotEmpty((new Size)->get());
+		$this->assertNotEmpty($this->size->get());
 	}
 
 	function testCanSetSize() {
-		$size = new Size;
-		$size->set(12);
-		$this->assertSame(12, $size->get());
+		$this->size->set(12);
+		$this->assertSame(12, $this->size->get());
 	}
 
 	function testCanInitialiseSize() {
-		$size = new Size(12);
-		$this->assertSame(12, $size->get());
+		$init_size = new Size(12);
+		$this->assertSame(12, $init_size->get());
 	}
 
 	function testHasMax() {
-		$this->assertIsInt((new Size)->get_max());
+		$this->assertIsInt($this->size->get_max());
 	}
 
 	function testHasMin() {
-		$this->assertIsInt((new Size)->get_min());
+		$this->assertIsInt($this->size->get_min());
 	}
 
 	/**
 	 * @dataProvider defaultCappedSizesProvider
 	 */
 	function testIsCappedWithinCustomRange($out, $in) {
-		$size = new Size;
-		$size->set($in);
-		$this->assertSame($out, $size->get($in));
+		$this->size->set($in);
+		$this->assertSame($out, $this->size->get($in));
 	}
 
 	/**
 	 * @dataProvider defaultCappedSizesProvider
 	 */
 	function testIsCappedWithinRange($out, $in) {
-		$this->assertSame($out, (new Size)->cap_within_range($in));
+		$this->assertSame(
+			$out,
+			$this->size->cap_within_range($in)
+		);
 	}
 
 	function defaultCappedSizesProvider() {
@@ -64,24 +71,22 @@ class SizeClassTest extends TestCase {
 	}
 
 	function testCanSetMin() {
-		$size = new Size;
-		$size->set_min(1);
-		$this->assertSame(1, $size->get_min(1));
-		$this->assertSame(1, $size->cap_within_range(-20));
-		$this->assertSame(1, $size->cap_within_range(-1));
-		$this->assertSame(1, $size->cap_within_range(0));
-		$this->assertSame(1, $size->cap_within_range(1));
+		$this->size->set_min(1);
+		$this->assertSame(1, $this->size->get_min(1));
+		$this->assertSame(1, $this->size->cap_within_range(-20));
+		$this->assertSame(1, $this->size->cap_within_range(-1));
+		$this->assertSame(1, $this->size->cap_within_range(0));
+		$this->assertSame(1, $this->size->cap_within_range(1));
 	}
 
 	function testCanSetMax() {
-		$size = new Size;
-		$size->set_max(100);
-		$this->assertSame(100, $size->get_max(100));
-		$this->assertSame(30, $size->cap_within_range(30));
-		$this->assertSame(52, $size->cap_within_range(52));
-		$this->assertSame(100, $size->cap_within_range(100));
-		$this->assertSame(100, $size->cap_within_range(101));
-		$this->assertSame(100, $size->cap_within_range(105));
-		$this->assertSame(100, $size->cap_within_range(200));
+		$this->size->set_max(100);
+		$this->assertSame(100, $this->size->get_max(100));
+		$this->assertSame(30, $this->size->cap_within_range(30));
+		$this->assertSame(52, $this->size->cap_within_range(52));
+		$this->assertSame(100, $this->size->cap_within_range(100));
+		$this->assertSame(100, $this->size->cap_within_range(101));
+		$this->assertSame(100, $this->size->cap_within_range(105));
+		$this->assertSame(100, $this->size->cap_within_range(200));
 	}
 }
