@@ -20,14 +20,7 @@ class Row extends React.Component {
 
 class Grid extends React.Component {
 	render() {
-		//@todo FIXME: replace with requested grid
-		let rows = [
-			['*', '.', '*', '.', '*'],
-			['.', '*', '.', '*', '.'],
-			['.', '*', '*', '*', '.'],
-			['.', '*', '.', '*', '.'],
-			['*', '.', '*', '.', '*'],
-		];
+		let rows = this.props.grid;
 		return(
 			<table className="grid">
 				<tbody>

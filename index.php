@@ -1,3 +1,7 @@
+<?php
+  require_once(__DIR__ . '/app/snowflake.php');
+?>
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -20,11 +24,11 @@
 </head>
 <body>
   <div id="canvas"></div>
-  <!-- @todo FIXME: create Snowflake map for Grid to render -->
   <script type="text/babel">
+    let rows = <?php echo (new Snowflake)->get(); ?>;
   	let canvas = document.querySelector('#canvas');
 	ReactDOM.render(
-		<Grid></Grid>,
+		<Grid grid={rows}></Grid>,
 		canvas
 	);
   </script>
