@@ -61,9 +61,12 @@ class Snowflake {
 			$row = [];
 			for($ii = 0; $ii < $plots; $ii++) {
 				$index = rand(0, $quarter);
-				$row[] = $index;
-				$row[] = ($size - $index) - 1;
+				$left_plot = $index;
+				$right_plot = ($size - $index) - 1;
+				$row[] = $left_plot;
+				$row[] = $right_plot;
 			}
+			$row = array_unique($row, SORT_NUMERIC);
 			$top[] = $row;
 		}
 		return $top;
