@@ -31,18 +31,21 @@ class Snowflake {
 	}
 
 	/**
-	  * Build the character map
-	  * @return array - the character map
+	  * Plot the character map
+	  * @return array - the plotted character map
 	  */
-	private function build() {
+	public function build() {
 		$size = $this->m_size;
+		$map = $this->get_map();
 		$grid = [];
 		for($i = 0; $i < $size; ++$i) {
-			$rows = [];
+			$row = [];
 			for($ii = 0; $ii < $size; ++$ii) {
-				$rows[] = '*';
+				$row[] = in_array($ii, $map[$i])
+					? '*'
+					: '.';
 			}
-			$grid[] = $rows;
+			$grid[] = $row;
 		}
 		return $grid;
 	}
