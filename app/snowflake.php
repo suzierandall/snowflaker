@@ -23,6 +23,14 @@ class Snowflake {
 	}
 
 	/**
+	 * Get the size of the snowflake
+	 * @return int - the size of the snowflake
+	 */
+	public function get_size(): int {
+		return $this->m_size;
+	}
+
+	/**
 	  * Build the character map
 	  * @return array - the character map
 	  */
