@@ -73,6 +73,22 @@ class Snowflake {
 	}
 
 	/**
+	  * Build the bottom half of the character map
+	  * @param array top - the top half of the character map
+	  * @return array - the bottom half of the character map
+	  */
+	public function get_bottom(array $top) {
+		$size = $this->m_size;
+		$is_even = $size % 2 === 0;
+		// remove center line of odd-numbered grids
+		if (!$is_even) {
+			array_pop($top);
+		}
+		$bottom = array_reverse($top);
+		return $bottom;
+	}
+
+	/**
 	 * Check if Snowflake is ready to cystalise
 	 * @return bool - true if ready, false otherwise
 	 */
