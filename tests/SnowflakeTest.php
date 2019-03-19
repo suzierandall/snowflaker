@@ -26,4 +26,10 @@ class SnowflakeTest extends TestCase {
 	function testSnowflakeIsReady() {
 		$this->assertTrue($this->snowflake->is_ready());
 	}
+
+	function testGetSize() {
+		$size = 12;
+		$snowflake = new Snowflake($size);
+		$this->assertEquals($size, $snowflake->get_size());
+	}
 }
