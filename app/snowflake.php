@@ -48,6 +48,28 @@ class Snowflake {
 	}
 
 	/**
+	  * Build the top half of the character map
+	  * @return array - the top half of the character map
+	  */
+	public function get_top() {
+		$size = $this->m_size;
+		$quarter = ceil($size/2)-1;
+		$plots = ceil($quarter/2);
+
+		$top = [];
+		for($i = 0; $i <= $quarter; $i++) {
+			$row = [];
+			for($ii = 0; $ii < $plots; $ii++) {
+				$index = rand(0, $quarter);
+				$row[] = $index;
+				$row[] = ($size - $index) - 1;
+			}
+			$top[] = $row;
+		}
+		return $top;
+	}
+
+	/**
 	 * Check if Snowflake is ready to cystalise
 	 * @return bool - true if ready, false otherwise
 	 */
