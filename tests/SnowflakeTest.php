@@ -63,4 +63,15 @@ class SnowflakeTest extends TestCase {
 		$this->assertIsArray($map);
 		$this->assertEquals($size, count($map));
 	}
+
+	function testBuild() {
+		$size = 12;
+		$half = floor($size/2);
+		$snowflake = new Snowflake($size);
+		$map = $snowflake->get_map();
+		$this->assertNotEmpty($map);
+		$this->assertIsArray($map);
+		$this->assertEquals($size, count($map));
+		$this->assertTrue(in_array('*', $map[0]));
+	}
 }
