@@ -59,8 +59,8 @@ class SnowflakeTest extends TestCase {
 		$half = floor($size/2);
 		$snowflake = new Snowflake($size);
 		$map = $snowflake->get_map();
-		$this->assertNotEmpty($bottom);
-		$this->assertIsArray($bottom);
+		$this->assertNotEmpty($map);
+		$this->assertIsArray($map);
 		$this->assertEquals($size, count($map));
 	}
 }
