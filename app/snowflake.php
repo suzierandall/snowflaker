@@ -89,6 +89,18 @@ class Snowflake {
 	}
 
 	/**
+	  * Build the character map
+	  * @return array - the character map
+	  */
+	public function get_map() {
+		$top = $this->get_top();
+		$bottom = $this->get_bottom($top);
+
+		$map = array_merge($top, $bottom);
+		return $map;
+	}
+
+	/**
 	 * Check if Snowflake is ready to cystalise
 	 * @return bool - true if ready, false otherwise
 	 */
