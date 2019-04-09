@@ -2,6 +2,9 @@
 require_once(__DIR__ . '/size.php');
 
 class Snowflake {
+	public const ON = '*';
+	public const OFF = '.';
+
 	private $m_size;
 
 	/**
@@ -42,8 +45,8 @@ class Snowflake {
 			$row = [];
 			for($ii = 0; $ii < $size; ++$ii) {
 				$row[] = in_array($ii, $map[$i])
-					? '*'
-					: '.';
+					? self::ON
+					: self::OFF;
 			}
 			$grid[] = $row;
 		}
