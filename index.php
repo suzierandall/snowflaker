@@ -15,11 +15,16 @@
   <style>
   	/* @todo keep separate (re-skinnable) or tie to component? */
   	#canvas .grid {
-  		border: 1px solid #aaa;
   	}
   	#canvas .pixel {
-  		padding: 4px 10px;
+      font-size: 2px;
+      color: #99ccff;
+      background-color: #99ccff;
+  		padding: 0px 1px;
   	}
+    #canvas .pixel:empty {
+      background-color: #fff;
+    }
   </style>
 </head>
 <body>

@@ -3,7 +3,7 @@ require_once(__DIR__ . '/size.php');
 
 class Snowflake {
 	public const ON = '*';
-	public const OFF = '.';
+	public const OFF = '';
 
 	private $m_size;
 
