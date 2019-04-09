@@ -64,7 +64,7 @@
   </div>
 
   <script type="text/babel">
-    let rows = <?php echo (new Snowflake)->get(); ?>;
+    let rows = <?php $x = rand(7,14); echo (new Snowflake($x))->get(); ?>;
     Array.prototype.forEach.call(
       document.getElementsByClassName('canvas'),
       function(el) {
