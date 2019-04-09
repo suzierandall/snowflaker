@@ -14,24 +14,24 @@
   <script src="app/assets/js/snowflake.js" type="text/babel"></script>
   <style>
   	/* @todo keep separate (re-skinnable) or tie to component? */
-  	#canvas .grid {
+  	.canvas .grid {
   	}
-  	#canvas .pixel {
+  	.canvas .pixel {
       font-size: 2px;
       color: #99ccff;
       background-color: #99ccff;
   		padding: 0px 1px;
   	}
-    #canvas .pixel:empty {
+    .canvas .pixel:empty {
       background-color: #fff;
     }
   </style>
 </head>
 <body>
-  <div id="canvas"></div>
+  <div class="canvas"></div>
   <script type="text/babel">
     let rows = <?php echo (new Snowflake)->get(); ?>;
-  	let canvas = document.querySelector('#canvas');
+  	let canvas = document.querySelector('.canvas');
 	ReactDOM.render(
 		<Grid grid={rows}></Grid>,
 		canvas
