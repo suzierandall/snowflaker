@@ -49,29 +49,52 @@
 <body>
 
   <div class="frame">
-    <div class="canvas c1"></div>
-    <div class="canvas c2"></div>
-    <div class="canvas c3"></div>
-    <div class="canvas c4"></div>
-    <div class="canvas c5"></div>
-    <div class="canvas c6"></div>
-    <div class="canvas c7"></div>
-    <div class="canvas c8"></div>
-    <div class="canvas c9"></div>
-    <div class="canvas c10"></div>
-    <div class="canvas c11"></div>
-    <div class="canvas c12"></div>
+    <div class="canvas" id="c1"></div>
+    <div class="canvas" id="c2"></div>
+    <div class="canvas" id="c3"></div>
+    <div class="canvas" id="c4"></div>
+    <div class="canvas" id="c5"></div>
+    <div class="canvas" id="c6"></div>
+    <div class="canvas" id="c7"></div>
+    <div class="canvas" id="c8"></div>
+    <div class="canvas" id="c9"></div>
+    <div class="canvas" id="c10"></div>
+    <div class="canvas" id="c11"></div>
+    <div class="canvas" id="c12"></div>
   </div>
 
   <script type="text/babel">
-    let rows = <?php $x = rand(7,14); echo (new Snowflake($x))->get(); ?>;
+    <?php
+      $rows = [];
+      for ($i=0; $i<12; $i++) {
+        $x = rand(7,14);
+        $rows[] = (new Snowflake($x))->get();
+      }
+    ?>
+
+    let rows = [];
+    rows.push(<?=$rows[0]?>);
+    rows.push(<?=$rows[1]?>);
+    rows.push(<?=$rows[2]?>);
+    rows.push(<?=$rows[3]?>);
+    rows.push(<?=$rows[4]?>);
+    rows.push(<?=$rows[5]?>);
+    rows.push(<?=$rows[6]?>);
+    rows.push(<?=$rows[7]?>);
+    rows.push(<?=$rows[8]?>);
+    rows.push(<?=$rows[9]?>);
+    rows.push(<?=$rows[10]?>);
+    rows.push(<?=$rows[11]?>);
+
+    let i = 0;
     Array.prototype.forEach.call(
       document.getElementsByClassName('canvas'),
       function(el) {
         ReactDOM.render(
-          <Grid grid={rows}></Grid>,
+          <Grid grid={rows[i]}></Grid>,
           el
-        )
+        );
+        ++i;
       }
     );
   </script>
