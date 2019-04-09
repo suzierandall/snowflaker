@@ -14,8 +14,27 @@
   <script src="app/assets/js/snowflake.js" type="text/babel"></script>
   <style>
   	/* @todo keep separate (re-skinnable) or tie to component? */
-  	.canvas .grid {
+    .frame {
+      width: 300px;
+    }
+  	.canvas {
+      float: left;
+      margin-top: 20px;
+      margin-left: 20px;
   	}
+    .canvas:nth-child(2n) {
+      margin-top: 40px;
+      margin-left: 25px;
+    }
+    .canvas:nth-child(5n) {
+      margin-top: 80px;
+      margin-left: 60px;
+    }
+    .canvas:nth-child(7n) {
+      margin-top: -10px;
+      margin-left: 10px;
+    }
+    .canvas .grid {}
   	.canvas .pixel {
       font-size: 2px;
       color: #99ccff;
@@ -28,14 +47,33 @@
   </style>
 </head>
 <body>
-  <div class="canvas"></div>
+
+  <div class="frame">
+    <div class="canvas c1"></div>
+    <div class="canvas c2"></div>
+    <div class="canvas c3"></div>
+    <div class="canvas c4"></div>
+    <div class="canvas c5"></div>
+    <div class="canvas c6"></div>
+    <div class="canvas c7"></div>
+    <div class="canvas c8"></div>
+    <div class="canvas c9"></div>
+    <div class="canvas c10"></div>
+    <div class="canvas c11"></div>
+    <div class="canvas c12"></div>
+  </div>
+
   <script type="text/babel">
     let rows = <?php echo (new Snowflake)->get(); ?>;
-  	let canvas = document.querySelector('.canvas');
-	ReactDOM.render(
-		<Grid grid={rows}></Grid>,
-		canvas
-	);
+    Array.prototype.forEach.call(
+      document.getElementsByClassName('canvas'),
+      function(el) {
+        ReactDOM.render(
+          <Grid grid={rows}></Grid>,
+          el
+        )
+      }
+    );
   </script>
 </body>
 </html>
